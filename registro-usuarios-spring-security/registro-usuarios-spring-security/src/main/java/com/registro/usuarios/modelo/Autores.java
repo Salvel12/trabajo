@@ -14,7 +14,6 @@ import java.util.Set;
 public class Autores {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -28,6 +27,21 @@ public class Autores {
     )
     private Set<libros> libros;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<com.registro.usuarios.modelo.libros> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(Set<com.registro.usuarios.modelo.libros> libros) {
+        this.libros = libros;
+    }
 
     public Autores(Long id, String nombre, Set<libros> libros) {
         this.id = id;

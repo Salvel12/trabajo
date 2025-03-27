@@ -35,7 +35,6 @@ public class libros {
     }
 
 
-
     public libros(String id, String nombre, Autores autor, LocalDate fechaLanzamiento, String genero) {
         this.nombre = nombre;
         this.autores = autores;
@@ -47,7 +46,21 @@ public class libros {
 
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<Autores> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(Set<Autores> autores) {
+        this.autores = autores;
+    }
 
     public String getNombre() {
         return nombre;

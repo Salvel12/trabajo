@@ -2,12 +2,14 @@ package com.registro.usuarios.controlador;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
-    @GetMapping("/user/home")
-    public String userHome() {
-        return "User"; // Nombre del HTML en templates
+    @GetMapping
+    public String adminHome() {
+        return "User";
     }
 }
