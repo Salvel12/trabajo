@@ -16,8 +16,9 @@ public class libros {
     @Column(nullable = false)
     private String nombre;
 
-    @ManyToMany(mappedBy = "libros")
-    private Set<Autores> autores;
+    @ManyToOne
+    @JoinColumn(name = "autor_id", nullable = false) // Clave foránea en la tabla libros
+    private Autores autor;
 
     @Column(nullable = false)
     private LocalDate fechaLanzamiento;
@@ -29,7 +30,7 @@ public class libros {
     public libros(Long id, String nombre, Set<Autores> autores, LocalDate fechaLanzamiento, String genero) {
         this.id = id;
         this.nombre = nombre;
-        this.autores = autores;
+        this.autor = autor;
         this.fechaLanzamiento = fechaLanzamiento;
         this.genero = genero;
     }
@@ -37,7 +38,7 @@ public class libros {
 
     public libros(String id, String nombre, Autores autor, LocalDate fechaLanzamiento, String genero) {
         this.nombre = nombre;
-        this.autores = autores;
+        this.autor = autor;
         this.fechaLanzamiento = fechaLanzamiento;
         this.genero = genero;
     }
@@ -54,12 +55,12 @@ public class libros {
         this.id = id;
     }
 
-    public Set<Autores> getAutores() {
-        return autores;
+    public Autores getAutor() {
+        return autor;
     }
 
-    public void setAutores(Set<Autores> autores) {
-        this.autores = autores;
+    public void setAutor(Autores autor) {
+        this.autor = autor;
     }
 
     public String getNombre() {

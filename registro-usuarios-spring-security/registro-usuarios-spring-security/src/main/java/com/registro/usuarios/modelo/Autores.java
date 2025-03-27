@@ -14,17 +14,13 @@ import java.util.Set;
 public class Autores {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
     private String nombre;
 
-    @ManyToMany
-    @JoinTable(
-            name = "autor_libros",
-            joinColumns = @JoinColumn(name = "autor_id"),
-            inverseJoinColumns = @JoinColumn(name = "libro_id")
-    )
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<libros> libros;
 
     public Long getId() {

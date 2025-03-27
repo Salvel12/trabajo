@@ -6,13 +6,13 @@ import java.util.List;
 public class AutorDTO {
 
     private long id;
-    private long nombre;
+    private String nombre;
 
     private List<String> titulosLibros;
 
     public AutorDTO(long id, String nombre, List<String> titulosLibros) {
         this.id = id;
-        this.nombre = nombre.length();
+        this.nombre = nombre;
         this.titulosLibros = titulosLibros;
     }
 
@@ -24,11 +24,11 @@ public class AutorDTO {
         this.id = id;
     }
 
-    public long getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(long nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 

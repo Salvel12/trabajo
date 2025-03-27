@@ -7,12 +7,12 @@ public class LibroDTO {
     private String nombre;
     private String genero;
     private LocalDate fechaLanzamiento;
-    private Long autorId; // Solo el ID del autor para evitar cargar toda la entidad
+    private Long autorId;
 
-    // Constructor vacío
+
     public LibroDTO() {}
 
-    // Constructor con parámetros
+
     public LibroDTO(Long id, String nombre, String genero, LocalDate fechaLanzamiento, Long autorId) {
         this.id = id;
         this.nombre = nombre;
@@ -21,7 +21,7 @@ public class LibroDTO {
         this.autorId = autorId;
     }
 
-    // Getters y Setters
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

@@ -6,6 +6,8 @@ import com.registro.usuarios.modelo.Autores;
 import com.registro.usuarios.modelo.libros;
 import com.registro.usuarios.repositorio.AutorRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class AutoresService {
+public class AutoresService implements AutoresServiceinter{
 
     @Autowired
     private AutorRepositorio autorRepositorio;
@@ -33,12 +35,15 @@ public class AutoresService {
         ).collect(Collectors.toList());
     }
 
-    // Guardar un autor (sin libros)
-    public Autores guardarAutor(Autores autor) {
-        return autorRepositorio.save(autor);
+
+    public Autores guardarAutor(Autores a) {
+        return autorRepositorio.save(a);
     }
 
-    // Obtener autor por ID
+    public Autores obtenerAutorPorIdEntidad(Long id) {
+        return autorRepositorio.findById(id).orElse(null);
+    }
+
     public AutorDTO obtenerAutorPorId(Long id) {
         Autores autor = autorRepositorio.findById(id)
                 .orElseThrow(() -> new RuntimeException("Autor no encontrado"));
@@ -52,11 +57,14 @@ public class AutoresService {
         );
     }
 
-    // Eliminar un autor
+
     public void eliminarAutor(Long id) {
         autorRepositorio.deleteById(id);
     }
 
 
-
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return null;
+    }
 }
